@@ -12,7 +12,7 @@ import {
 } from 'antd';
 import type { ColumnsType } from 'antd/es/table';
 
-/* ====== TYPE ====== */
+/* ================= TYPE ================= */
 interface Product {
   id: number;
   name: string;
@@ -20,7 +20,7 @@ interface Product {
   quantity: number;
 }
 
-/* ====== DATA MẪU ====== */
+/* ================= MOCK DATA ================= */
 const initialProducts: Product[] = [
   { id: 1, name: 'Laptop Dell XPS 13', price: 25000000, quantity: 10 },
   { id: 2, name: 'iPhone 15 Pro Max', price: 30000000, quantity: 15 },
@@ -29,14 +29,14 @@ const initialProducts: Product[] = [
   { id: 5, name: 'MacBook Air M3', price: 28000000, quantity: 8 },
 ];
 
-/* ====== COMPONENT ====== */
-const ProductManagement: React.FC = () => {
+/* ================= COMPONENT ================= */
+const QuanLySanPham: React.FC = () => {
   const [products, setProducts] = useState<Product[]>(initialProducts);
   const [keyword, setKeyword] = useState<string>('');
   const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
   const [form] = Form.useForm<Product>();
 
-  /* ====== THÊM SẢN PHẨM ====== */
+  /* ===== THÊM SẢN PHẨM ===== */
   const handleAddProduct = async () => {
     try {
       const values = await form.validateFields();
@@ -53,22 +53,22 @@ const ProductManagement: React.FC = () => {
       form.resetFields();
       setIsModalOpen(false);
     } catch (error) {
-      // validation fail
+      // Validation fail
     }
   };
 
-  /* ====== XÓA ====== */
+  /* ===== XÓA SẢN PHẨM ===== */
   const handleDelete = (id: number) => {
     setProducts(prev => prev.filter(p => p.id !== id));
     message.success('Xóa sản phẩm thành công');
   };
 
-  /* ====== SEARCH ====== */
-  const filteredProducts = products.filter(p =>
-    p.name.toLowerCase().includes(keyword.toLowerCase())
+  /* ===== TÌM KIẾM ===== */
+  const filteredProducts = products.filter(product =>
+    product.name.toLowerCase().includes(keyword.toLowerCase())
   );
 
-  /* ====== TABLE ====== */
+  /* ===== TABLE COLUMNS ===== */
   const columns: ColumnsType<Product> = [
     {
       title: 'STT',
@@ -91,7 +91,7 @@ const ProductManagement: React.FC = () => {
       title: 'Thao tác',
       render: (_, record) => (
         <Popconfirm
-          title="Bạn có chắc muốn xóa?"
+          title="Bạn có chắc chắn muốn xóa?"
           onConfirm={() => handleDelete(record.id)}
         >
           <Button danger>Xóa</Button>
@@ -104,9 +104,10 @@ const ProductManagement: React.FC = () => {
     <div style={{ padding: 24 }}>
       <h2>Quản lý Sản phẩm</h2>
 
+      {/* ===== SEARCH + ADD ===== */}
       <Space style={{ marginBottom: 16 }}>
         <Input.Search
-          placeholder="Tìm theo tên sản phẩm"
+          placeholder="Tìm kiếm theo tên sản phẩm"
           allowClear
           onChange={e => setKeyword(e.target.value)}
         />
@@ -115,15 +116,17 @@ const ProductManagement: React.FC = () => {
         </Button>
       </Space>
 
+      {/* ===== TABLE ===== */}
       <Table<Product>
         rowKey="id"
         columns={columns}
         dataSource={filteredProducts}
       />
 
+      {/* ===== MODAL ADD ===== */}
       <Modal
         title="Thêm sản phẩm mới"
-        open={isModalOpen}
+        visible={isModalOpen}
         onOk={handleAddProduct}
         onCancel={() => setIsModalOpen(false)}
         okText="Thêm"
@@ -133,7 +136,9 @@ const ProductManagement: React.FC = () => {
           <Form.Item
             label="Tên sản phẩm"
             name="name"
-            rules={[{ required: true, message: 'Vui lòng nhập tên sản phẩm' }]}
+            rules={[
+              { required: true, message: 'Vui lòng nhập tên sản phẩm' },
+            ]}
           >
             <Input />
           </Form.Item>
@@ -154,7 +159,11 @@ const ProductManagement: React.FC = () => {
             name="quantity"
             rules={[
               { required: true, message: 'Vui lòng nhập số lượng' },
-              { type: 'number', min: 1, message: 'Số lượng phải là số nguyên dương' },
+              {
+                type: 'number',
+                min: 1,
+                message: 'Số lượng phải là số nguyên dương',
+              },
             ]}
           >
             <InputNumber style={{ width: '100%' }} />
@@ -165,4 +174,4 @@ const ProductManagement: React.FC = () => {
   );
 };
 
-export default ProductManagement;
+export default QuanLySanPham;
