@@ -1,4 +1,6 @@
-﻿export default [
+﻿import path from "path";
+
+export default [
 	{
 		path: '/user',
 		layout: false,
@@ -53,6 +55,18 @@
 		name: 'Quản lý đơn hàng',
 		icon: 'ShoppingCartOutlined',
 		component: './QuanLyDonHang',
+	},
+	{
+		path: '/TroChoiDoanSo',
+		name: 'Trò chơi đoán số',
+		icon: 'SmileOutlined',
+		component: './TroChoiDoanSo',
+	},
+	{
+		path: '/QuanLyHocTap',
+		name: 'Quản lý học tập',
+		icon: 'BookOutlined',
+		component: './QuanLyHocTap',
 	},
 
 	// DANH MUC HE THONG
