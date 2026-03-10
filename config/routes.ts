@@ -68,6 +68,18 @@ export default [
 		icon: 'BookOutlined',
 		component: './QuanLyHocTap',
 	},
+	{
+		path: '/KeoBuaBao',
+		name: 'Trò chơi Kéo Búa Bao',
+		icon: 'ScissorOutlined',
+		component: './KeoBuaBao',
+	},
+	{
+		path: '/QuanLyCauHoiTuLuan',
+		name: 'Quản lý câu hỏi tự luận',
+		icon: 'QuestionOutlined',
+		component: './QuanLyCauHoiTuLuan',
+	},
 
 	// DANH MUC HE THONG
 	// {
