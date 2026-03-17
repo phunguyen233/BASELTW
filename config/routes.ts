@@ -80,6 +80,12 @@ export default [
 		icon: 'QuestionOutlined',
 		component: './QuanLyCauHoiTuLuan',
 	},
+	{
+		path: '/QuanLyDatLich',
+		name: 'Quản lý đặt lịch',
+		icon: 'CalendarOutlined',
+		component: './QuanLyDatLich',
+	},
 
 	// DANH MUC HE THONG
 	// {
