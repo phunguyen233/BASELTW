@@ -86,6 +86,12 @@ export default [
 		icon: 'CalendarOutlined',
 		component: './QuanLyDatLich',
 	},
+	{
+		path: '/QuanLyVanBangTotNghiep',
+		name: 'Quản lý văn bằng tốt nghiệp',
+		icon: 'FileDoneOutlined',
+		component: './QuanLyVanBangTotNghiep',
+	},
 
 	// DANH MUC HE THONG
 	// {
