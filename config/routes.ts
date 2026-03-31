@@ -92,6 +92,12 @@ export default [
 		icon: 'FileDoneOutlined',
 		component: './QuanLyVanBangTotNghiep',
 	},
+	{
+		path: '/QuanLyCauLacBo',
+		name: 'Quản lý câu lạc bộ',
+		icon: 'TeamOutlined',
+		component: './QuanLyCauLacBo',
+	},
 
 	// DANH MUC HE THONG
 	// {
