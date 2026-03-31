@@ -292,7 +292,7 @@ export default function App() {
         />
 
         <Modal
-          open={visible}
+          visible={visible}
           onCancel={() => {
             setVisible(false);
             (window as any).editId = null;
@@ -443,16 +443,84 @@ export default function App() {
 
       {/* ================= STATS ================= */}
       <TabPane tab="Thống kê" key="4">
-        <h3>Tổng CLB: {clubs.length}</h3>
-        <h3>
-          Pending: {apps.filter((a) => a.status === Status.PENDING).length}
-        </h3>
-        <h3>
-          Approved: {apps.filter((a) => a.status === Status.APPROVED).length}
-        </h3>
-        <h3>
-          Rejected: {apps.filter((a) => a.status === Status.REJECTED).length}
-        </h3>
+        <h2>📊 Tổng quan</h2>
+
+        <Table
+          pagination={false}
+          dataSource={[
+            {
+              key: "1",
+              type: "Số CLB",
+              value: clubs.length,
+            },
+            {
+              key: "2",
+              type: "Pending",
+              value: apps.filter((a) => a.status === Status.PENDING).length,
+            },
+            {
+              key: "3",
+              type: "Approved",
+              value: apps.filter((a) => a.status === Status.APPROVED).length,
+            },
+            {
+              key: "4",
+              type: "Rejected",
+              value: apps.filter((a) => a.status === Status.REJECTED).length,
+            },
+          ]}
+          columns={[
+            { title: "Loại", dataIndex: "type" },
+            {
+              title: "Số lượng",
+              dataIndex: "value",
+              render: (v) => <b>{v}</b>,
+            },
+          ]}
+        />
+
+        <h2 style={{ marginTop: 30 }}>📌 Theo CLB</h2>
+
+        <Table
+          rowKey="id"
+          dataSource={clubs.map((c) => ({
+            id: c.id,
+            name: c.name,
+            pending: apps.filter(
+              (a) => a.clubId === c.id && a.status === Status.PENDING
+            ).length,
+            approved: apps.filter(
+              (a) => a.clubId === c.id && a.status === Status.APPROVED
+            ).length,
+            rejected: apps.filter(
+              (a) => a.clubId === c.id && a.status === Status.REJECTED
+            ).length,
+          }))}
+          columns={[
+            { title: "CLB", dataIndex: "name" },
+            {
+              title: "Pending",
+              dataIndex: "pending",
+              render: (v) => <Tag color="orange">{v}</Tag>,
+            },
+            {
+              title: "Approved",
+              dataIndex: "approved",
+              render: (v) => <Tag color="green">{v}</Tag>,
+            },
+            {
+              title: "Rejected",
+              dataIndex: "rejected",
+              render: (v) => <Tag color="red">{v}</Tag>,
+            },
+            {
+              title: "Tổng",
+              render: (r: any) => (
+                <b>{r.pending + r.approved + r.rejected}</b>
+              ),
+            },
+          ]}
+        />
       </TabPane>
     </Tabs>
   );
