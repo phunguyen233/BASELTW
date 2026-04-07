@@ -98,6 +98,12 @@ export default [
 		icon: 'TeamOutlined',
 		component: './QuanLyCauLacBo',
 	},
+	{
+		path: '/QuanLyKeHoachDuLich',
+		name: 'Quản lý kế hoạch du lịch',
+		icon: 'EnvironmentOutlined',
+		component: './QuanLyKeHoachDuLich',
+	},
 
 	// DANH MUC HE THONG
 	// {
