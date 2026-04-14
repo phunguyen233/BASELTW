@@ -104,6 +104,12 @@ export default [
 		icon: 'EnvironmentOutlined',
 		component: './QuanLyKeHoachDuLich',
 	},
+	{
+		path: '/QuanLyKhoaHocOnline',
+		name: 'Quản lý khóa học online',
+		icon: 'ReadOutlined',
+		component: './QuanLyKhoaHocOnline',
+	},
 
 	// DANH MUC HE THONG
 	// {
