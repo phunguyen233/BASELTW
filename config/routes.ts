@@ -110,6 +110,12 @@ export default [
 		icon: 'ReadOutlined',
 		component: './QuanLyKhoaHocOnline',
 	},
+	{
+		path: '/QuanLyNoiDungVaBaiViet',
+		name: 'Quản lý nội dung và bài viết',
+		icon: 'FileTextOutlined',
+		component: './QuanLyNoiDungVaBaiViet',
+	},
 
 	// DANH MUC HE THONG
 	// {
