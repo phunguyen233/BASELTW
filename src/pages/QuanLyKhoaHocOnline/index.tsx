@@ -270,6 +270,7 @@ const App: React.FC = () => {
             name="description"
             label="Mô tả "
             rules={[{ required: true }]}
+            
           >
             <TextArea rows={4} />
           </Form.Item>

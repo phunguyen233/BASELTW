@@ -116,6 +116,12 @@ export default [
 		icon: 'FileTextOutlined',
 		component: './QuanLyNoiDungVaBaiViet',
 	},
+	{
+		path: '/UngDungTheDucVaSucKhoe',
+		name: 'Ứng dụng thể dục và sức khỏe',
+		icon: 'HeartOutlined',
+		component: './UngDungTheDucVaSucKhoe',
+	},
 
 	// DANH MUC HE THONG
 	// {
