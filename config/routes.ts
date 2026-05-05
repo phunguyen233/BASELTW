@@ -122,6 +122,12 @@ export default [
 		icon: 'HeartOutlined',
 		component: './UngDungTheDucVaSucKhoe',
 	},
+	{
+		path: '/QuanLyDanhSachCongViec',
+		name: 'Quản lý danh sách công việc',
+		icon: 'CheckSquareOutlined',
+		component: './QuanLyDanhSachCongViec',
+	},
 
 	// DANH MUC HE THONG
 	// {
